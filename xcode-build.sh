@@ -14,7 +14,8 @@ function xcode_build {
 	BUILD_DIRECTORY=${WORKSPACE}/build
 	
 	echo xcodebuild -configuration "$CONFIGURATION" -sdk "$SDK" -target "$TARGET" DSTROOT="${BUILD_DIRECTORY}" OBJROOT="${BUILD_DIRECTORY}/objects" SYMROOT="${BUILD_DIRECTORY}" SHARED_PRECOMPS_DIR="${BUILD_DIRECTORY}/shared" "$*" || fail "xcodebuild failed" 
-	xcodebuild -configuration "$CONFIGURATION" -sdk "$SDK" -target "$TARGET" DSTROOT="${BUILD_DIRECTORY}" OBJROOT="${BUILD_DIRECTORY}/objects" SYMROOT="${BUILD_DIRECTORY}" SHARED_PRECOMPS_DIR="${BUILD_DIRECTORY}/shared" OTHER_CODE_SIGN_FLAGS="--keychain /Users/groundkeeper/Library/Keychains/jenkins.keychain" "$*" || fail "xcodebuild failed" 
+	#xcodebuild -configuration "$CONFIGURATION" -sdk "$SDK" -target "$TARGET" DSTROOT="${BUILD_DIRECTORY}" OBJROOT="${BUILD_DIRECTORY}/objects" SYMROOT="${BUILD_DIRECTORY}" SHARED_PRECOMPS_DIR="${BUILD_DIRECTORY}/shared" OTHER_CODE_SIGN_FLAGS="--keychain /Users/groundkeeper/Library/Keychains/jenkins.keychain" "$*" || fail "xcodebuild failed" 
+	xcodebuild -configuration "$CONFIGURATION" -sdk "$SDK" -target "$TARGET" DSTROOT="${BUILD_DIRECTORY}" OBJROOT="${BUILD_DIRECTORY}/objects" SYMROOT="${BUILD_DIRECTORY}" SHARED_PRECOMPS_DIR="${BUILD_DIRECTORY}/shared" "$*" || fail "xcodebuild failed" 
 }
 
 if [ -z "$CONFIGURATION" ]; then
