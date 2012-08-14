@@ -26,15 +26,15 @@ then
 
 	$CURL_CMD $PROVISIONING.mobileprovision ${PROVISIONING_URL}/$PROVISIONING.mobileprovision
 	
-	if ($?) {
+	if [ $? > 0 ]; then 
 		fail "${PROVISIONING_URL}/$PROVISIONING.mobileprovision not found"
-	}
+	fi
 	
 	$CURL_CMD $PROVISIONING.p12 ${PROVISIONING_URL}/$PROVISIONING.p12
 
-	if ($?) {
+	if [ $? > 0 ]; then 
 		fail "${PROVISIONING_URL}/$PROVISIONING.p12 not found"
-	}
+	fi
 
 	# find the uuid in the provisioning profile
 	UUID=`cat $PROVISIONING.mobileprovision | awk '/\<key\>UUID\<\/key\>/,/<\string\>.*\<\/string\>/' | tail -n1 | cut -f2 -d">"|cut -f1 -d"<"`
