@@ -51,6 +51,18 @@ BUILD PARAMETERS
 
   If not set, that the app is not signed
 
+* __PROVISIONING_URL__ (optional but needed for PROVISIONING)
+
+  URL where the provisioning profile is not found.
+	e.g.
+	PROVISIONING_URL=http://localhost
+	PROVISIONING=test
+	then the following files are fetched
+	http://localhost/test.p12
+	http://localhost/test.mobileprovision
+	
+	Note: curl is used to fetch these files therefor als ftp should work (but not tested)
+
 
 * __CERTIFICATES_PASSWORD__ (optional)
 

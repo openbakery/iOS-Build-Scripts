@@ -9,24 +9,23 @@ function section_print {
     echo "\n=== $* ==="
 }
 
-HOST=MY_HOST_NAME
-PROVISIONING_PATH=/Jenkins/Provisioning
+
 CURL_CMD="curl -# -C - -o"
 
 
-if [ -n "$PROVISIONING" ] && [ -n "$CERTIFICATES_PASSWORD" ]
+if [ -n "$PROVISIONING_URL" ] && [ -n "$PROVISIONING" ] && [ -n "$CERTIFICATES_PASSWORD" ]
 then
 	
 	if [ -z "$KEYCHAIN_PASSWORD" ]; then
-		KEYCHAIN_PASSWORD = "thisisalongpasswordforthekeychain"
+		KEYCHAIN_PASSWORD="thisisalongpasswordforthekeychain"
 	fi
 
 	section_print "Get Mobile Provisioning Profile"
 
 	mkdir -p `dirname $PROVISIONING`
 
-	$CURL_CMD $PROVISIONING.mobileprovision http://${HOST}${PROVISIONING_PATH}/$PROVISIONING.mobileprovision
-	$CURL_CMD $PROVISIONING.p12 http://${HOST}${PROVISIONING_PATH}/$PROVISIONING.p12
+	$CURL_CMD $PROVISIONING.mobileprovision ${PROVISIONING_URL}/$PROVISIONING.mobileprovision
+	$CURL_CMD $PROVISIONING.p12 ${PROVISIONING_URL}/$PROVISIONING.p12
 
 	# find the uuid in the provisioning profile
 	UUID=`cat $PROVISIONING.mobileprovision | awk '/\<key\>UUID\<\/key\>/,/<\string\>.*\<\/string\>/' | tail -n1 | cut -f2 -d">"|cut -f1 -d"<"`
@@ -63,4 +62,4 @@ fi
 
 
 
-section_print "Bootstrap finished"
+section_print "Keychain prepared"
