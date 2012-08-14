@@ -10,7 +10,7 @@ function section_print {
 }
 
 
-CURL_CMD="curl -# -C - -o"
+CURL_CMD="curl -o"
 
 
 if [ -n "$PROVISIONING_URL" ] && [ -n "$PROVISIONING" ] && [ -n "$CERTIFICATES_PASSWORD" ]
@@ -24,15 +24,15 @@ then
 
 	mkdir -p `dirname $PROVISIONING`
 
-	$CURL_CMD $PROVISIONING.mobileprovision ${PROVISIONING_URL}/$PROVISIONING.mobileprovision
 	
-	if [ $? > 0 ]; then 
+	$CURL_CMD $PROVISIONING.mobileprovision ${PROVISIONING_URL}/$PROVISIONING.mobileprovision
+	if [ $? -gt 0 ]; then 
 		fail "${PROVISIONING_URL}/$PROVISIONING.mobileprovision not found"
 	fi
 	
 	$CURL_CMD $PROVISIONING.p12 ${PROVISIONING_URL}/$PROVISIONING.p12
 
-	if [ $? > 0 ]; then 
+	if [ $? -gt 0 ]; then 
 		fail "${PROVISIONING_URL}/$PROVISIONING.p12 not found"
 	fi
 
