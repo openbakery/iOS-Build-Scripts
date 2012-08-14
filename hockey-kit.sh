@@ -46,8 +46,8 @@ ICON_LARGE=`/usr/libexec/PlistBuddy "${INFO_PLIST}.plist" -c "Print :CFBundleIco
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/pngcrush "${APP_DIRECTORY}/$ICON_SMALL" "${PROJECT_DIRECTORY}/$ICON_SMALL"
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/pngcrush "${APP_DIRECTORY}/$ICON_LARGE" "${PROJECT_DIRECTORY}/$ICON_LARGE"
 
-if [ ! "$CHANGELOG" ]; then
-  CHANGELOG="No changes."
+if [ ! "$HOCKE_KIT_APP_NAME" ]; then
+  HOCKEY_KIT_APP_NAME=`$TARGET`
 fi 
 
 cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
@@ -75,7 +75,7 @@ cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
                <key>kind</key>
                <string>software</string>
                <key>title</key>
-               <string>$TARGET</string>
+               <string>$HOCKEY_KIT_APP_NAME</string>
                <key>subtitle</key>
                <string>$bundle_short_version</string>
            </dict>
