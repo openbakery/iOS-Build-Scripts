@@ -55,7 +55,6 @@ then
 	security default-keychain -s "$KEYCHAIN_NAME"
 	# OD: following line is necessary if codesign also touches the login keychain, to avoid "user interaction not allowed"
 	# workaround: specify --keychain in OTHER_CODE_SIGN_FLAGS
-	#security unlock-keychain -p "magic123" ~/Library/Keychains/login.keychain
 	security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_NAME
 
 	section_print "Import Certificates to Keychain"
