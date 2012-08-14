@@ -116,7 +116,7 @@ APPLICATION_NAME=`ls -1 "$PROJECT_DIRECTORY" | grep ".*\.app$" | head -n1`
 APPLICATION_NAME=${APPLICATION_NAME%.*}
 
 
-if [ -n "$PROVISIONING" ] && [ -n "$SIGN_IDENTITY" ]; then
+if [ -n "$PROVISIONING" ] && [ -n "$PROVISIONING_URL" ] && [ -n "$SIGN_IDENTITY" ]; then
 	section_print "Sign the Application"
 	xcrun -sdk "$SDK" PackageApplication -v "${PROJECT_DIRECTORY}/${APPLICATION_NAME}.app" -o "${PROJECT_DIRECTORY}/${APPLICATION_NAME}.ipa" --sign "${SIGN_IDENTITY}" --embed "${PROVISIONING}.mobileprovision"
 else
