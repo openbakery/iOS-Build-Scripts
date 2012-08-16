@@ -32,6 +32,8 @@ echo "BUILD_NUMBER: $BUILD_NUMBER"
 
 plutil -convert xml1 "$BINARY_INFO_PLIST" -o "${INFO_PLIST}.plist"
 
+BUNDLE_ID=$(defaults read "$INFO_PLIST" CFBundleIdentifier)
+
 bundle_version=$(defaults read "$INFO_PLIST" CFBundleVersion)
 if [ -z "$HOCKE_KIT_APP_NAME" ]; 
 then
