@@ -75,10 +75,12 @@ EOF
 
 BUNDLE_DIRECTORY="$PROJECT_DIRECTORY/$BUNDLE_ID"
 
-echo $BUNDLE_DIRECTORY/$BUILD_NUMBER
+echo "Building here:$BUNDLE_DIRECTORY/$BUILD_NUMBER"
 
 mkdir -p "$BUNDLE_DIRECTORY/$BUILD_NUMBER"
+echo mv "$PROJECT_DIRECTORY/${APPLICATION_NAME}.ipa" "$BUNDLE_DIRECTORY/$BUILD_NUMBER/${BUNDLE_ID}-${BUILD_ID}.ipa"
 mv "$PROJECT_DIRECTORY/${APPLICATION_NAME}.ipa" "$BUNDLE_DIRECTORY/$BUILD_NUMBER/${BUNDLE_ID}-${BUILD_ID}.ipa"
+echo mv "$PROJECT_DIRECTORY/${APPLICATION_NAME}.plist" "$BUNDLE_DIRECTORY/$BUILD_NUMBER/${BUNDLE_ID}-${BUILD_ID}.plist"
 mv "$PROJECT_DIRECTORY/${APPLICATION_NAME}.plist" "$BUNDLE_DIRECTORY/$BUILD_NUMBER/${BUNDLE_ID}-${BUILD_ID}.plist"
 
 rm -rf "${APP_DIRECTORY}"                                                                                                                                                                                                    
