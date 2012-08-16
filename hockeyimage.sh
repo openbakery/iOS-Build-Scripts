@@ -41,8 +41,8 @@ fi
 
 if [ -z "$OUTPUT_FILE" ]
 then
-	echo "Output File empty"
-	echo ""
+	echo "Assuming Icon.png as output file name"
+	OUTPUT_FILE="Icon.png"
 	exit 1
 fi
 
