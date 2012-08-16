@@ -115,7 +115,7 @@ fi
 APPLICATION_NAME=`ls -1 "$PROJECT_DIRECTORY" | grep ".*\.app$" | head -n1`
 APPLICATION_NAME=${APPLICATION_NAME%.*}
 
-export CODESIGN_ALLOCATE="/Applications/Xcode.app/Contents/Developer/usr/bin/codesign_allocate"
+#export CODESIGN_ALLOCATE="/Applications/Xcode.app/Contents/Developer/usr/bin/codesign_allocate"
 
 if [ -n "$PROVISIONING" ] && [ -n "$PROVISIONING_URL" ] && [ -n "$SIGN_IDENTITY" ]; then
 	section_print "Sign the Application"
