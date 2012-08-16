@@ -6,8 +6,8 @@
 # (c)2012 Cocoanetics
 
 # defaults
-INFO_PLIST=""
 OUTPUT_FILE=""
+WORKING_DIR=${WORKSPACE}
 
 USAGE="Usage: hockeyimage.sh -p <Info.plist> -o <Output Image> [-w <Working Dir>]\n"
 
@@ -21,8 +21,7 @@ while getopts "p:o:w:h" opt; do
 			OUTPUT_FILE="$OPTARG";;
 
         w)
-			echo "cd $OPTARG"
-            cd $OPTARG;;
+            WORKING_DIR="$OPTARG";;
 
  		h)  echo $USAGE
 			exit 0;;
@@ -32,11 +31,23 @@ while getopts "p:o:w:h" opt; do
     esac
 done
 
+if [ -d "$WORKING_DIR" ]
+then
+	echo "Work Space: $WORKING_DIR"
+	cd $WORKING_DIR
+fi
+
 if [ -z "$INFO_PLIST" -o -z "$OUTPUT_FILE" ]
 then
 	echo "Usage: hockeyimage.sh -p <Info.plist> -o <Output Image> [-w <Working Dir>]"
 	echo ""
 	exit 1
+fi
+
+if [ ! -f "$INFO_PLIST" ]
+then
+    echo "No file found at $INFO_PLIST"
+    exit 1
 fi
 
 echo "$INFO_PLIST $OUTPUT_FILE"
