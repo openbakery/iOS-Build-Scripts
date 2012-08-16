@@ -124,6 +124,9 @@ fi
 if [ -n "$PROVISIONING" ] && [ -n "$PROVISIONING_URL" ] && [ -n "$SIGN_IDENTITY" ]; then
 	section_print "Sign the Application"
 	xcrun -sdk "$SDK" PackageApplication -v "${PROJECT_DIRECTORY}/${APPLICATION_NAME}.app" -o "${PROJECT_DIRECTORY}/${APPLICATION_NAME}.ipa" --sign "${SIGN_IDENTITY}" --embed "${PROVISIONING}.mobileprovision"
+	if [ $? -gt 0 ]; then 
+		fail "Error packaging/signing application"
+	fi
 else
   section_print "SIGN SKIPPED because PROVISIONING or SIGN_IDENTITY are not configured properly"
   exit
