@@ -32,11 +32,12 @@ plutil -convert xml1 "$BINARY_INFO_PLIST" -o "${INFO_PLIST}.plist"
 BUNDLE_ID=$(defaults read "$INFO_PLIST" CFBundleIdentifier)
 
 bundle_version=$(defaults read "$INFO_PLIST" CFBundleVersion)
-if [ -z "$HOCKE_KIT_APP_NAME" ]; 
+if [ -z "$HOCKEY_KIT_APP_NAME" ]; 
 then
   HOCKEY_KIT_APP_NAME="$JOB_NAME"
 fi 
 
+echo "Manifest App Title: $HOCKEY_KIT_APP_NAME"
 echo "Writing Manifest to $PROJECT_DIRECTORY/${APPLICATION_NAME}.plist"
 
 cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
