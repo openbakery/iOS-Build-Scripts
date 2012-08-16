@@ -70,7 +70,7 @@ cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
                <key>bundle-identifier</key>
                <string>$BUNDLE_ID</string>
                <key>bundle-version</key>
-               <string>#$BUILD_NUMBER</string>
+               <string>$BUNDLE_VERSION</string>
                <key>kind</key>
                <string>software</string>
                <key>title</key>
