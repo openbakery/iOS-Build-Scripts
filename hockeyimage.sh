@@ -34,7 +34,7 @@ done
 if [ -d "$WORKING_DIR" ]
 then
 	echo "Work Space: $WORKING_DIR"
-	cd $WORKING_DIR
+	cd "$WORKING_DIR"
 fi
 
 if [ -z "$INFO_PLIST" -o -z "$OUTPUT_FILE" ]
