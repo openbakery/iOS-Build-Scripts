@@ -115,7 +115,11 @@ fi
 APPLICATION_NAME=`ls -1 "$PROJECT_DIRECTORY" | grep ".*\.app$" | head -n1`
 APPLICATION_NAME=${APPLICATION_NAME%.*}
 
-#export CODESIGN_ALLOCATE="/Applications/Xcode.app/Contents/Developer/usr/bin/codesign_allocate"
+# If command line tools are not installed in /usr/bin we need to let codesign know where to find codesign_allocate
+if [ ! $CODESIGN_ALLOCATE ]; 
+then 
+	export CODESIGN_ALLOCATE=$(xcrun -find codesign_allocate) 
+fi
 
 if [ -n "$PROVISIONING" ] && [ -n "$PROVISIONING_URL" ] && [ -n "$SIGN_IDENTITY" ]; then
 	section_print "Sign the Application"
