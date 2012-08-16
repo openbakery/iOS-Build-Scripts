@@ -31,7 +31,8 @@ plutil -convert xml1 "$BINARY_INFO_PLIST" -o "${INFO_PLIST}.plist"
 
 BUNDLE_ID=$(defaults read "$INFO_PLIST" CFBundleIdentifier)
 
-bundle_version=$(defaults read "$INFO_PLIST" CFBundleVersion)
+BUNDLE_VERSION=$(defaults read "$INFO_PLIST" CFBundleVersion)
+
 if [ -z "$HOCKEY_KIT_APP_NAME" ]; 
 then
   HOCKEY_KIT_APP_NAME="$JOB_NAME"
@@ -61,13 +62,13 @@ cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
                <key>bundle-identifier</key>
                <string>$BUNDLE_ID</string>
                <key>bundle-version</key>
-               <string>#$BUILD_NUMBER</string>
+               <string>$BUNDLE_VERSION</string>
                <key>kind</key>
                <string>software</string>
                <key>title</key>
                <string>$HOCKEY_KIT_APP_NAME</string>
                <key>subtitle</key>
-               <string>$bundle_short_version</string>
+               <string>subtitle</string>
            </dict>
        </dict>
    </array>
