@@ -30,22 +30,6 @@ plutil -convert xml1 "$BINARY_INFO_PLIST" -o "${INFO_PLIST}.plist"
 
 
 bundle_version=$(defaults read "$INFO_PLIST" CFBundleVersion)
-bundle_short_version=$(defaults read "$INFO_PLIST" CFBundleShortVersionString)
-export BUNDLE_ID=$(defaults read "$INFO_PLIST" CFBundleIdentifier)
-
-
-#ICON_SMALL=`defaults read "${INFO_PLIST}" CFBundleIconFiles | grep png | cut -f2 -d \" | head -n1`
-#ICON_LARGE=`defaults read "${INFO_PLIST}" CFBundleIconFiles | grep png | cut -f2 -d \" | tail -n1`
-
-ICON_SMALL=`/usr/libexec/PlistBuddy "${INFO_PLIST}.plist" -c "Print :CFBundleIcons:CFBundlePrimaryIcon:CFBundleIconFiles:0"`
-ICON_LARGE=`/usr/libexec/PlistBuddy "${INFO_PLIST}.plist" -c "Print :CFBundleIcons:CFBundlePrimaryIcon:CFBundleIconFiles:1"`
-
-#echo "ICON_SMALL: $ICON_SMALL"
-#echo "ICON_LARGE: $ICON_LARGE"
-
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/pngcrush "${APP_DIRECTORY}/$ICON_SMALL" "${PROJECT_DIRECTORY}/$ICON_SMALL"
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/pngcrush "${APP_DIRECTORY}/$ICON_LARGE" "${PROJECT_DIRECTORY}/$ICON_LARGE"
-
 if [ ! "$HOCKE_KIT_APP_NAME" ]; then
   HOCKEY_KIT_APP_NAME=`$TARGET`
 fi 
@@ -93,8 +77,6 @@ echo $BUNDLE_DIRECTORY/$BUILD_NUMBER
 mkdir -p "$BUNDLE_DIRECTORY/$BUILD_NUMBER"
 mv "$PROJECT_DIRECTORY/${APPLICATION_NAME}.ipa" "$BUNDLE_DIRECTORY/$BUILD_NUMBER/${BUNDLE_ID}-${BUILD_ID}.ipa"
 mv "$PROJECT_DIRECTORY/${APPLICATION_NAME}.plist" "$BUNDLE_DIRECTORY/$BUILD_NUMBER/${BUNDLE_ID}-${BUILD_ID}.plist"
-mv "$PROJECT_DIRECTORY/${ICON_SMALL}" "$BUNDLE_DIRECTORY/"
-mv "$PROJECT_DIRECTORY/${ICON_LARGE}" "$BUNDLE_DIRECTORY/"
 
 rm -rf "${APP_DIRECTORY}"                                                                                                                                                                                                    
 rm -rf "${APP_DIRECTORY}.dSYM"
