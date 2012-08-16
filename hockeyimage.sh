@@ -43,10 +43,9 @@ if [ -z "$OUTPUT_FILE" ]
 then
 	echo "Assuming HockeyIcon.png as output file name"
 	OUTPUT_FILE="HockeyIcon.png"
-	exit 1
 fi
 
-if [ ! -z "$INFO_PLIST" ]
+if [ -z "$INFO_PLIST" ]
 then
     echo "No Info.plist specified, aborting."
     exit 1
@@ -58,10 +57,8 @@ then
     exit 1
 fi
 
-echo "$INFO_PLIST $OUTPUT_FILE"
-
 # retrieve the names of the icons  
-CFBUNDLEICONFILES=`/usr/libexec/PlistBuddy Info.plist -c "Print :CFBundleIconFiles" -c "Print :CFBundleIcons:CFBundlePrimaryIcon:CFBundleIconFiles" | grep -v "{" | grep -v "}" | sed -e "s/^[ ]*//g" | sort -u`
+CFBUNDLEICONFILES=`/usr/libexec/PlistBuddy $INFO_PLIST -c "Print :CFBundleIconFiles" -c "Print :CFBundleIcons:CFBundlePrimaryIcon:CFBundleIconFiles" | grep -v "{" | grep -v "}" | sed -e "s/^[ ]*//g" | sort -u`
 
 # make tmp dir
 WORK_DIR=$TMPDIR/$$
