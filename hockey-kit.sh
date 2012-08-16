@@ -31,7 +31,7 @@ plutil -convert xml1 "$BINARY_INFO_PLIST" -o "${INFO_PLIST}.plist"
 
 bundle_version=$(defaults read "$INFO_PLIST" CFBundleVersion)
 if [ ! "$HOCKE_KIT_APP_NAME" ]; then
-  HOCKEY_KIT_APP_NAME=`$TARGET`
+  HOCKEY_KIT_APP_NAME="$JOB_NAME"
 fi 
 
 cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
