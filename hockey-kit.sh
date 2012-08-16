@@ -67,14 +67,15 @@ cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
                <string>software</string>
                <key>title</key>
                <string>$HOCKEY_KIT_APP_NAME</string>
-               <key>subtitle</key>
-               <string>subtitle</string>
            </dict>
        </dict>
    </array>
 </dict>
 </plist>
 EOF
+
+#<key>subtitle</key>
+#<string>subtitle</string>
 
 
 BUNDLE_DIRECTORY="$PROJECT_DIRECTORY/$BUNDLE_ID"
