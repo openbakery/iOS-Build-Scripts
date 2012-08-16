@@ -32,6 +32,14 @@ plutil -convert xml1 "$BINARY_INFO_PLIST" -o "${INFO_PLIST}.plist"
 BUNDLE_ID=$(defaults read "$INFO_PLIST" CFBundleIdentifier)
 
 BUNDLE_VERSION=$(defaults read "$INFO_PLIST" CFBundleVersion)
+BUNDLE_SHORT_VERSION=$(defaults read "$INFO_PLIST" CFBundleShortVersionString)
+
+if [ -z "$BUNDLE_SHORT_VERSION" ]
+then
+	echo "No short version string found in Info.plist, assuming $BUNDLE_VERSION"
+	BUNDLE_SHORT_VERSION="$BUNDLE_VERSION"
+fi
+
 
 if [ -z "$HOCKEY_KIT_APP_NAME" ]; 
 then
@@ -62,20 +70,19 @@ cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
                <key>bundle-identifier</key>
                <string>$BUNDLE_ID</string>
                <key>bundle-version</key>
-               <string>$BUNDLE_VERSION</string>
+               <string>#$BUILD_NUMBER</string>
                <key>kind</key>
                <string>software</string>
                <key>title</key>
                <string>$HOCKEY_KIT_APP_NAME</string>
+               <key>subtitle</key>
+               <string>$BUNDLE_SHORT_VERSION</string>
            </dict>
        </dict>
    </array>
 </dict>
 </plist>
 EOF
-
-#<key>subtitle</key>
-#<string>subtitle</string>
 
 
 BUNDLE_DIRECTORY="$PROJECT_DIRECTORY/$BUNDLE_ID"
