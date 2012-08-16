@@ -28,14 +28,17 @@ INFO_PLIST=`cd "${PROJECT_DIRECTORY}" ; pwd`/Info
 
 echo "INFO_PLIST: $INFO_PLIST"
 echo "APP_DIRECTORY: $APP_DIRECTORY"
+echo "BUILD_NUMBER: $BUILD_NUMBER"
 
 plutil -convert xml1 "$BINARY_INFO_PLIST" -o "${INFO_PLIST}.plist"
 
-
 bundle_version=$(defaults read "$INFO_PLIST" CFBundleVersion)
-if [ ! "$HOCKE_KIT_APP_NAME" ]; then
+if [ -z "$HOCKE_KIT_APP_NAME" ]; 
+then
   HOCKEY_KIT_APP_NAME="$JOB_NAME"
 fi 
+
+echo "Writing Manifest to $PROJECT_DIRECTORY/${APPLICATION_NAME}.plist"
 
 cat << EOF > "$PROJECT_DIRECTORY"/${APPLICATION_NAME}.plist
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -75,7 +78,7 @@ EOF
 
 BUNDLE_DIRECTORY="$PROJECT_DIRECTORY/$BUNDLE_ID"
 
-echo "Building here:$BUNDLE_DIRECTORY/$BUILD_NUMBER"
+echo "Building here:--$BUNDLE_DIRECTORY--$BUILD_NUMBER--"
 
 mkdir -p "$BUNDLE_DIRECTORY/$BUILD_NUMBER"
 echo mv "$PROJECT_DIRECTORY/${APPLICATION_NAME}.ipa" "$BUNDLE_DIRECTORY/$BUILD_NUMBER/${BUNDLE_ID}-${BUILD_ID}.ipa"
