@@ -15,7 +15,10 @@ fi
 
 
 APPLICATION_NAME=`ls -1 "$PROJECT_DIRECTORY" | grep ".*\.app$" | head -n1`
+
+echo "---$APPLICATION_NAME---"
 APPLICATION_NAME=${APPLICATION_NAME%.*}
+echo "---$APPLICATION_NAME---"
 
 IPA_FILE=${APPLICATION_NAME}.ipa
 

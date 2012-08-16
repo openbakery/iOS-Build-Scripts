@@ -41,8 +41,8 @@ fi
 
 if [ -z "$OUTPUT_FILE" ]
 then
-	echo "Assuming Icon.png as output file name"
-	OUTPUT_FILE="Icon.png"
+	echo "Assuming HockeyIcon.png as output file name"
+	OUTPUT_FILE="HockeyIcon.png"
 	exit 1
 fi
 
