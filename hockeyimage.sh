@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo $@
+
 # Gets the icon file names from specified Info.plist, uncrushes them and finds
 # the best one to use for HockeyKit server. If none with 114x114 exist then
 # the next higher resolution one is resized appropriately
@@ -37,11 +39,17 @@ then
 	cd "$WORKING_DIR"
 fi
 
-if [ -z "$INFO_PLIST" -o -z "$OUTPUT_FILE" ]
+if [ -z "$OUTPUT_FILE" ]
 then
-	echo "Usage: hockeyimage.sh -p <Info.plist> -o <Output Image> [-w <Working Dir>]"
+	echo "Output File empty"
 	echo ""
 	exit 1
+fi
+
+if [ ! -z "$INFO_PLIST" ]
+then
+    echo "No Info.plist specified, aborting."
+    exit 1
 fi
 
 if [ ! -f "$INFO_PLIST" ]
