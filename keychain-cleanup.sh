@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source common.sh
+
 section_print "Cleanup keychain"
 
 KEYCHAIN_NAME=~/Library/Keychains/jenkins.keychain
