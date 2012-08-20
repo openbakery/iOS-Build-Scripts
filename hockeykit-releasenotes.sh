@@ -1,3 +1,7 @@
+
+# check if hockeykit needs to be used
+if [ $HOCKEYKIT ]; then
+
 # creating release notes for HockeyKit (has to be added manually in build settings to be transferred to HockeyKit)
 echo "create release notes for HockeyKit"
 
@@ -18,3 +22,5 @@ cat << EOF > releasenotes.html
 EOF
 
 echo "creating of release notes fininshed"
+
+fi

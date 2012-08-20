@@ -73,3 +73,16 @@ BUILD PARAMETERS
 * __XCODE_SETTINGS__ (optional)
   For setting additional infos to xcodebuild command for example:
   preprocessor macros
+  
+* __HOCKEKIT__ (optional)
+  HockeyKit will be used
+  
+  A manifest is beeing created.
+  Releasenotes for HockeyKit server page is beeing created (taken from CHANGELOG). If CHANGELOG is not set
+  'No changes.' will be used.
+  
+* __HOCKEKIT_APP_NAME__ (optional)
+  Name that is used for displaying on the HockeyKit Server page.
+  If it is not specified but HOCKEYKIT enabled the Target that was build is used as displayed name on 
+  the HockeyKit Server page.
+  

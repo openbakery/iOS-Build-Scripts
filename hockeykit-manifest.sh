@@ -1,4 +1,8 @@
 
+# check if hockeykit needs to be used
+if [ $HOCKEYKIT ]; then
+
+# creates the complete manifest for hockeykit
 if [ $WORKING_DIRECTORY ]; then
   PROJECT_DIRECTORY=${WORKSPACE}/${WORKING_DIRECTORY}/build/${CONFIGURATION}-${SDK}
 else
@@ -101,3 +105,5 @@ rm -rf "${APP_DIRECTORY}.dSYM"
 rm "${INFO_PLIST}.plist"
 
 echo "create manifest finished"
+
+fi

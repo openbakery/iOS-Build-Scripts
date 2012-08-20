@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# check if hockeykit needs to be used
+if [ $HOCKEYKIT ]; then
+
 echo $@
 
 # Gets the icon file names from specified Info.plist, uncrushes them and finds
@@ -123,3 +126,5 @@ fi
 
 # clean up
 rm -rf $WORK_DIR
+
+fi
