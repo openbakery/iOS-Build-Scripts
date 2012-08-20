@@ -9,6 +9,8 @@ else
   PROJECT_DIRECTORY=${WORKSPACE}/build/${CONFIGURATION}-${SDK}
 fi
 
+section_print "create hockeykit manifest"
+
 echo "PROJECT_DIRECTORY=$PROJECT_DIRECTORY"
 
 
@@ -104,6 +106,6 @@ rm -rf "${APP_DIRECTORY}.dSYM"
 
 rm "${INFO_PLIST}.plist"
 
-echo "create manifest finished"
+echo "create hockeykit manifest finished"
 
 fi

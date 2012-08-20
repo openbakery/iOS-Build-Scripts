@@ -3,6 +3,8 @@
 # check if hockeykit needs to be used
 if [ $HOCKEYKIT ]; then
 
+section_print "create hockeykit image"
+
 echo $@
 
 # Gets the icon file names from specified Info.plist, uncrushes them and finds
@@ -126,5 +128,7 @@ fi
 
 # clean up
 rm -rf $WORK_DIR
+
+section_print "create hockeykit image finished"
 
 fi
