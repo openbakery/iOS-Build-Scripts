@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source common.sh
+
 function xcode_build {
 	BUILD_DIRECTORY=${WORKSPACE}/build
 	

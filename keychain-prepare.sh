@@ -1,7 +1,8 @@
 #!/bin/sh
 
-CURL_CMD="curl -o"
+source common.sh
 
+CURL_CMD="curl -o"
 
 if [ -n "$PROVISIONING_URL" ] && [ -n "$PROVISIONING" ] && [ -n "$CERTIFICATES_PASSWORD" ]
 then
