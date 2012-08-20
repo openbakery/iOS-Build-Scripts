@@ -5,6 +5,8 @@ source common.sh
 # check if hockeykit needs to be used
 if [ $HOCKEYKIT ]; then
 
+section_print "create hockeykit manifest"
+
 # creates the complete manifest for hockeykit
 if [ $WORKING_DIRECTORY ]; then
   PROJECT_DIRECTORY=${WORKSPACE}/${WORKING_DIRECTORY}/build/${CONFIGURATION}-${SDK}
@@ -12,7 +14,7 @@ else
   PROJECT_DIRECTORY=${WORKSPACE}/build/${CONFIGURATION}-${SDK}
 fi
 
-section_print "create hockeykit manifest"
+
 
 echo "PROJECT_DIRECTORY=$PROJECT_DIRECTORY"
 
@@ -109,6 +111,6 @@ rm -rf "${APP_DIRECTORY}.dSYM"
 
 rm "${INFO_PLIST}.plist"
 
-echo "create hockeykit manifest finished"
+echo "creating of hockeykit manifest finished"
 
 fi

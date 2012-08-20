@@ -1,9 +1,5 @@
 #!/bin/sh
 
-function section_print {
-    echo "\n=== $* ==="
-}
-
 section_print "Cleanup keychain"
 
 KEYCHAIN_NAME=~/Library/Keychains/jenkins.keychain

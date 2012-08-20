@@ -1,3 +1,7 @@
+#!/bin/sh
+
+source common.sh
+
 chmod +x *.sh
 ./keychain-prepare.sh %@  || { echo "prepare keychain failed"; exit 1; } 
 ./xcode-build.sh %@ || { echo "xcode-build failed"; exit 1; } 

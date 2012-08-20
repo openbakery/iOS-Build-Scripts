@@ -131,6 +131,6 @@ fi
 # clean up
 rm -rf $WORK_DIR
 
-section_print "create hockeykit image finished"
+section_print "creating of hockeykit image finished"
 
 fi
