@@ -1,9 +1,12 @@
+#!/bin/sh
+
+source common.sh
 
 # check if hockeykit needs to be used
 if [ $HOCKEYKIT ]; then
 
 # creating release notes for HockeyKit (has to be added manually in build settings to be transferred to HockeyKit)
-echo "create release notes for HockeyKit"
+section_print "create release notes for HockeyKit"
 
 if [ ! "$CHANGELOG" ]; then
   CHANGELOG="No changes."
@@ -21,6 +24,6 @@ cat << EOF > releasenotes.html
 </html>
 EOF
 
-echo "creating of release notes fininshed"
+section_print "creating of release notes fininshed"
 
 fi

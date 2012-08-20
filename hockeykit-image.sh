@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source common.sh
+
 # check if hockeykit needs to be used
 if [ $HOCKEYKIT ]; then
 
