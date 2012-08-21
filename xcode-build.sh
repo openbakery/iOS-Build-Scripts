@@ -69,7 +69,7 @@ if [ $CONFIGURATION = "Debug" ] && [ "$BUNDLE_IDENTIFIER" ]; then
 fi
 
 # Modify bundle version for Hockey Kit builds in build configuration Debug
-if [ $CONFIGURATION = "Debug" ]
+if [ $CONFIGURATION = "Debug" ] && [ $INFO_PLIST ]
 then
   	section_print "Setting build number to bundle version for HockeyKit builds"
 
@@ -78,7 +78,7 @@ then
 
 	# Append build number to bundle version
 	BUNDLE_VERSION="$BUNDLE_VERSION #$BUILD_NUMBER"
-  /usr/libexec/PlistBuddy "$INFO_PLIST.plist" -c "Set :CFBundleVersion $BUNDLE_VERSION"
+    /usr/libexec/PlistBuddy "$INFO_PLIST.plist" -c "Set :CFBundleVersion $BUNDLE_VERSION"
 fi
 
 section_print "Building $CONFIGURATION"
