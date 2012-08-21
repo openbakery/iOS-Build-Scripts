@@ -58,6 +58,8 @@ INFO_PLIST=`cd "${PROJECT_DIRECTORY}" ; pwd`/${INFO_PLIST%.*}
 #rm -rf "${WORKSPACE}/build"
 
 
+echo "infoplist path: !!! $INFO_PLIST"
+
 # Modify the bundle identifier (only in build configuration Debug and bundle identifier has to be set)
 if [ $CONFIGURATION = "Debug" ] && [ "$BUNDLE_IDENTIFIER" ]; then
     section_print "Setting Bundle Identifer to $BUNDLE_IDENTIFIER"
