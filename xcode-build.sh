@@ -50,8 +50,9 @@ if [ -z "$INFO_PLIST" ]; then
     INFO_PLIST=`ls *Info.plist | head -n1`
 fi
 
-INFO_PLIST=`cd "${PROJECT_DIRECTORY}" ; pwd`/${INFO_PLIST%.*}
-
+if [ $INFO_PLIST ]; then
+  INFO_PLIST=`cd "${PROJECT_DIRECTORY}" ; pwd`/${INFO_PLIST%.*}
+fi
 
 #section_print "Cleaning up previous build"
 #xcode_build clean
