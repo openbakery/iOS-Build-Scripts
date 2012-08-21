@@ -46,11 +46,12 @@ if [ $PROJECT_DIRECTORY ]; then
     pwd
 fi
 
-if [ -z "$INFO_PLIST" ]; then
-    INFO_PLIST=`ls *Info.plist | head -n1`
-fi
-
 if [ $INFO_PLIST ]; then
+
+  if [ -z "$INFO_PLIST" ]; then
+    INFO_PLIST=`ls *Info.plist | head -n1`
+  fi
+
   INFO_PLIST=`cd "${PROJECT_DIRECTORY}" ; pwd`/${INFO_PLIST%.*}
 fi
 
