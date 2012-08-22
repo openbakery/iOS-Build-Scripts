@@ -145,4 +145,3 @@ zip -r "${APPLICATION_ID}.zip" . -i "${APPLICATION_ID}.app*"
 
 
 section_print "Build Successful"
-
