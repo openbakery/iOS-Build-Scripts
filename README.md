@@ -1,5 +1,8 @@
+
 iOS-Build-Scripts
 =================
+
+__Note: Discontinued! The successor is the gradle xcode plugin: https://github.com/openbakery/gradle-xcodePlugin__
 
 Scripts to build iOS application that can be used with a build server like Jenkins
 
